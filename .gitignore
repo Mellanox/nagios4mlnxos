@@ -1,0 +1,8 @@
+.project
+.pydevproject
+*.pyc
+*.pyo
+/.metadata/*
+.gitignore
+.settings
+build/nagios4mlnxos-*.tar.gz
