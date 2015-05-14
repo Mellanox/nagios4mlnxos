@@ -1,0 +1,53 @@
+###############################################
+#
+#         nagios4mlnxos package v1.0.0
+#
+###############################################
+
+Introduction
+-------------
+nagios4mlnxos is a package which generates Nagios configuration for Mellanox switches,
+and provides Nagios plugins based on SNMP for monitoring Mellanox switches.
+
+Requirements
+-------------
++ Python 2.7 or Python 2.6
++ The Python modules:
+  - argparse
+  - yaml
+  - voluptuous
++ The Perl modules:
+  - Net::SNMP
+
+Build
+-------
+1) Enter the build directory:
+   # cd build
+2) Invoke the build.sh script:
+   # ./build.sh
+   The nagios4mlnxos package will be created in the build directory
+ 
+Deployment
+-----------
+1) Extract the package to a temporary location:
+   # cd /tmp
+   # tar xvf nagios4mlnxos-1.0.0.tar.gz
+2) Enter the package's root directory:
+   # cd nagios4mlnxos
+3) Modify the configuration file conf/nagios4mlnxos.yaml:
+   - Change any snmp attributes
+   - Change any services attributes
+   - Add hostgroups
+     # <hostgroup>: <hostgroup switches CSV file path> e.g. NYC: /tmp/nyc-switches.csv
+     # CSV content example:
+       name,address,alias
+       NYC-SX1,10.209.24.102,NYC-SX1012-1
+       NYC-SX2,10.209.25.107,NYC-SX1400-2
+   - Place the host group's switches CSV files in the file system
+4) Invoke the script
+   # ./nagios4mlnxos.py -c ./conf/nagios4mlnxos.yaml
+5) Copy the files from /tmp/nagios4mlnxos_output to Nagios directories:
+   - conf: generated Nagios configuration files
+   - plugins: Nagios plugins which are used for monitoring Mellanox switches
+6) Reload Nagios configuration
+   # service nagios reload

@@ -1,0 +1,31 @@
+---
+snmp:
+  port: 161
+  timeout: 5
+  retries: 3
+  # SNMP protocol version possible values: 2, 3 (default: 2)
+  version: 2
+  snmpv2:
+    community: public
+  snmpv3:
+    username: admin
+    # Possible authentication protocols: MD5, SHA (default: MD5)
+    auth_protocol: MD5
+    auth_password: adminauth123
+    # Possible authentication protocols: DES, AES (default: DES)
+    privacy_protocol: DES
+    privacy_password: adminpriv123
+
+hostgroups:
+  #<hostgroup>: <hostgroup switches CSV file path> e.g. NYC: /tmp/nyc-switches.csv
+
+services:
+  ping:
+    warning_threshold: 200.0,20%
+    critical_threshold: 600.0,60%
+  cpu_load:
+    warning_threshold: 71
+    critical_threshold: 90
+  memory_utilization:
+    warning_threshold: 88
+    critical_threshold: 90
