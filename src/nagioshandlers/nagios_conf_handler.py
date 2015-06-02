@@ -261,7 +261,7 @@ define service{
     use                      generic-service
     hostgroup_name           %s
     service_description      Uptime
-    check_command            check_snmp!%s -o sysUpTime.0
+    check_command            check_snmp!%s -o 1.3.6.1.2.1.1.3.0
 }
 '''
 
@@ -270,7 +270,7 @@ define service{
     use                      generic-service
     hostgroup_name           %s
     service_description      SW Version
-    check_command            check_snmp!%s -o sysDescr.0
+    check_command            check_snmp!%s -o 1.3.6.1.2.1.1.1.0
 }
 '''
 
