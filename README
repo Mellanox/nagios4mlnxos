@@ -51,3 +51,6 @@ Deployment
    - plugins: Nagios plugins which are used for monitoring Mellanox switches
 6) Reload Nagios configuration
    # service nagios reload
+
+
+For an example of the procedure, please refer to https://community.mellanox.com/docs/DOC-2167
